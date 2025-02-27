@@ -8,8 +8,6 @@
 </head>
 
     <body class="bg-gray-100 flex items-center justify-center h-screen">
-        @extends('layouts.app')
-        @section('content')
         <div class="w-full max-w-md bg-white p-8 rounded-lg shadow-md">
             <h2 class="text-2xl font-bold text-center text-gray-700">Login</h2>
 
@@ -33,6 +31,6 @@
                 <a href="{{route('regis')}}" class="text-blue-500">Daftar</a>
             </p>
         </div>
-@endsection
+
     </body>
 </html>

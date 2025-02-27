@@ -7,7 +7,7 @@ use App\Models\EwsRanap;
 
 class EwsRanapController extends Controller
 {
-    public function index()
+    public function daftarews()
     {
         return view('Home');
     }
