@@ -7,12 +7,12 @@ use App\Models\EwsRanap;
 
 class EwsRanapController extends Controller
 {
-    public function daftarews()
+    public function index()
     {
         return view('Home');
     }
 
-    public function Laporan()
+    public function fromLaporan()
     {
         return view('Laporan');
     }

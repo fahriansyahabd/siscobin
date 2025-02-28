@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use App\Http\Controllers\EwsRanapController;
 use Illuminate\Support\Facades\Hash;
 
 class Authcontroler extends Controller
@@ -24,7 +25,7 @@ class Authcontroler extends Controller
         $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) {
-            return redirect()->route('daftar-ews')->with('success', 'Login berhasil! Selamat datang kembali, ' . Auth::user()->name);
+            return redirect()->route('homedasbord')->with('success', 'Login berhasil! Selamat datang kembali, ' . Auth::user()->name);
         }
 
         return back()->with('error', 'Login gagal! Email atau password salah.');
@@ -50,8 +51,13 @@ class Authcontroler extends Controller
         return redirect()->route('login')->with('success', 'Registrasi berhasil, silakan login!');
     }
 
-    public function logout(){
+    public function logout(Request $request){
 
-        return view('/login');
+        Auth::logout(); // Logout user dari session
+
+        $request->session()->invalidate(); // Hapus session
+        $request->session()->regenerateToken(); // Regenerasi token CSRF untuk keamanan
+
+        return redirect()->route('login')->with('success', 'Registrasi berhasil, silakan login!');
     }
 }

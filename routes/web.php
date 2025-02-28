@@ -21,10 +21,14 @@ Route::get('/', function () {
 
 Route:: get( '/login',  [Authcontroler::class,'index'])->name('login');
 Route:: post( 'login',  [Authcontroler::class,'aksilogin'])->name('login');
+Route:: get( 'logut',  [Authcontroler::class,'logout'])->name('logout');
 
 Route::get('/register', [Authcontroler::class,'showRegisterForm'])->name('register');
-Route::post('/register', [Authcontroler::class,'processRegister'])->name('register.process');
+Route::post('register', [Authcontroler::class,'processRegister'])->name('register.process');
 
-Route:: get( '/dashbord',  [EwsRanapController::class,'laporan'])->name('dashbors');
+Route:: get( '/from.laporan',  [EwsRanapController::class,'fromLaporan'])->name('from.Laporan');
 
-Route:: get( '/daftar-ews',  [EwsRanapController::class,'daftarews'])->name('daftar-ews');
+
+Route::middleware(['auth'])->group(function () {
+    Route::get( 'homedasbord',  [EwsRanapController::class,'index'])->name('homedasbord');
+});
