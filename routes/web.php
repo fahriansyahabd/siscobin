@@ -19,14 +19,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route:: get( 'login',  [Authcontroler::class,'index'])->name('login');
-// Route:: post( 'login',  [Authcontroler::class,'aksilogin'])->name('login');
+Route:: get( '/login',  [Authcontroler::class,'index'])->name('login');
+Route:: post( 'login',  [Authcontroler::class,'aksilogin'])->name('login');
 
 Route::get('/register', [Authcontroler::class,'showRegisterForm'])->name('register');
 Route::post('/register', [Authcontroler::class,'processRegister'])->name('register.process');
-// Route::get('/register', [Authcontroler:: 'processRegister'])->name(''register.process');
-// Route::post('/register', [AuthController::class, 'processRegister'])->name('register.process');
 
 Route:: get( '/dashbord',  [EwsRanapController::class,'laporan'])->name('dashbors');
 
-Route:: get( '/daftar ews',  [EwsRanapController::class,'daftarews'])->name('daftar ews');
+Route:: get( '/daftar-ews',  [EwsRanapController::class,'daftarews'])->name('daftar-ews');
